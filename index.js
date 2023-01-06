@@ -40,3 +40,12 @@ const updateScreen = () => {
 forwardButton.addEventListener("click", next);
 backButton.addEventListener("click", prev);
 navButtons.forEach((btn) => btn.addEventListener("click", navSelect));
+
+function timeOut() {
+  setTimeout(() => {
+    next();
+    timeOut()
+  }, 5000);
+}
+
+timeOut();
