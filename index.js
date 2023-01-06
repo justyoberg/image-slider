@@ -9,38 +9,33 @@ let imagePosition = 0;
 const next = () => {
 
   currentImage == 4 ? currentImage = 0 : currentImage += 1;
-  updateNavButtons();
-  imagePosition = 600 * currentImage;
-  imagesDiv.style.right = imagePosition + "px";
+  updateScreen();
 
 }
 
 const prev = () => {
 
   currentImage == 0 ? currentImage = 4 : currentImage -= 1;
-  updateNavButtons();
-  imagePosition = 600 * currentImage;
-  imagesDiv.style.right = imagePosition + "px";
+  updateScreen();
 
 }
 
 const navSelect = (event) => {
   
   currentImage = Number(event.target.id);
-  updateNavButtons();
-  imagePosition = 600 * currentImage;
-  imagesDiv.style.right = imagePosition + "px";
+  updateScreen();
   
 }
 
-const updateNavButtons = () => {
+const updateScreen = () => {
 
   navButtons.forEach((btn) => btn.id == currentImage ? 
                               btn.classList.add("active") : 
                               btn.classList.remove("active"));
-                              
-}
+  imagePosition = 600 * currentImage;
+  imagesDiv.style.right = imagePosition + "px";
 
+}
 
 forwardButton.addEventListener("click", next);
 backButton.addEventListener("click", prev);
